@@ -15,7 +15,7 @@ public class Contacto
 
         
         Contacto contacto = new Contacto();
-        return null;
+        return Result.Ok(contacto);
     }
 
 
