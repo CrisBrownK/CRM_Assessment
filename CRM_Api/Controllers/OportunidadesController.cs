@@ -1,5 +1,6 @@
 ﻿using Dominio;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -9,9 +10,10 @@ namespace CRM_Api.Controllers
     [ApiController]
     public class OportunidadesController : ControllerBase
     {
+        
 
-        // GET: api/<OportunidadesController>
-        [HttpGet]
+    // GET: api/<OportunidadesController>
+    [HttpGet]
         public List<Oportunidad> Get()
         {
             //Mostrar lista de oportunidades

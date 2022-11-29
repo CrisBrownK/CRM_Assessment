@@ -1,4 +1,6 @@
-﻿namespace Dominio;
+﻿using System.Text.RegularExpressions;
+
+namespace Dominio;
 
 public class Usuario
 {
@@ -15,9 +17,42 @@ public class Usuario
         if (string.IsNullOrEmpty(email)) return Result.Fail<Usuario>("El email no puede ser nulo ni estar vacío");
         if (string.IsNullOrEmpty(contraseña)) return Result.Fail<Usuario>("La contraseña no puede ser nulo ni estar vacío");
 
-        Usuario usuario = new Usuario(nombre, apellidos, email, contraseña, idUsuario);
+        if (validarEmail(email) == false) return Result.Fail<Usuario>("El formato del email introducido no es válido");
+        if(validarContraseña(contraseña) == false) return Result.Fail<Usuario>("La contraseña debe contener letras, números y carácteres especiales");
 
+
+        Usuario usuario = new Usuario(nombre, apellidos, email, contraseña, idUsuario);
         return Result.Ok(usuario);
+
+
+
+        #region METODOS
+        
+        bool validarEmail(string email)
+        {
+            String expresion;
+            expresion = "\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*";
+            if (Regex.IsMatch(email, expresion))
+            {
+                if (Regex.Replace(email, expresion, String.Empty).Length == 0) return true;
+
+            }
+            return false;
+        }
+
+        bool validarContraseña(string contraseña)
+        {
+            string letras = "abcdefghijklmnoupqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            string numero = "1234567890";
+            string especiales = "%$#?¿";
+
+            if (contraseña.Contains(letras) && contraseña.Contains(numero) && contraseña.Contains(especiales)) return true;
+
+            return false; 
+        }
+
+        #endregion
+
     }
 
     protected Usuario(string nombre, string apellidos, string email, string contraseña, int? idUsuario = null)
@@ -31,5 +66,7 @@ public class Usuario
 
 
     }
+
+
 
 }

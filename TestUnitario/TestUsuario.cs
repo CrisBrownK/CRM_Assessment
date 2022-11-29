@@ -159,5 +159,66 @@ public class TestUsuario
 
     }
 
+    [Fact]
+    public void TestGenerar_EmailNoValido_Exito()
+    {
+        //Arrange-Given
+
+        //Act-When
+
+        Result<Usuario> resultado = Usuario.Generar(nombre, apellido, "cristina.com", contraseña);
+
+        //Assert-Then
+
+        Assert.False(resultado.IsSuccess);
+        Assert.Equal("El formato del email introducido no es válido", resultado.Error);
+
+    }
+
+    [Fact]
+    public void TestGenerar_EmailValido_Exito()
+    {
+        //Arrange-Given
+
+        //Act-When
+
+        Result<Usuario> resultado = Usuario.Generar(nombre, apellido, "cristina.guzman@gmail.com", contraseña);
+
+        //Assert-Then
+
+        Assert.True(resultado.IsSuccess);
+
+    }
+
+    [Fact]
+    public void TestGenerar_ContraseñaNoValida_Exito()
+    {
+        //Arrange-Given
+
+        //Act-When
+
+        Result<Usuario> resultado = Usuario.Generar(nombre, apellido, email, "12345");
+
+        //Assert-Then
+
+        Assert.False(resultado.IsSuccess);
+        Assert.Equal("La contraseña debe contener letras, números y carácteres especiales", resultado.Error);
+
+    }
+
+    [Fact]
+    public void TestGenerar_ContraseñaValida_Exito()
+    {
+        //Arrange-Given
+
+        //Act-When
+
+        Result<Usuario> resultado = Usuario.Generar(nombre, apellido, email, "hola123#");
+
+        //Assert-Then
+
+        Assert.True(resultado.IsSuccess);
+
+    }
 
 }
