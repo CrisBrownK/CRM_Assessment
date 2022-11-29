@@ -8,7 +8,7 @@ public class Contacto
     public int IdOportunidad { get; set; }
     public int IdViaContacto { get; set; }
     public DateTime Fecha { get; set; }
-    public string Observaciones { get; set; }
+    public string? Observaciones { get; set; }
     public bool Contactado { get; set; }
 
     //contactado por defecto sera false?

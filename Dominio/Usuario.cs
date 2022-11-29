@@ -24,52 +24,6 @@ public class Usuario
         Usuario usuario = new Usuario(nombre, apellidos, email, contraseña, idUsuario);
         return Result.Ok(usuario);
 
-
-
-        #region METODOS
-
-        //Pendiente
-        
-        bool validarEmail(string email)
-        {
-            String expresion;
-            expresion = "\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*";
-            if (Regex.IsMatch(email, expresion))
-            {
-                if (Regex.Replace(email, expresion, String.Empty).Length == 0) return true;
-
-            }
-            return false;
-        }
-
-        bool validarContraseña(string contraseña)
-        {
-            //string letras = "abcdefghijklmnoupqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-            string numero = "1234567890";
-            //string especiales = "%$#?¿";
-
-            //if (contraseña.Contains(letras) && contraseña.Contains(numero) && contraseña.Contains(especiales)) return true;
-
-            int count = 0; 
-
-            for (int i=0; i<=9; i++)
-            {
-                string str1 = i.ToString();
-
-                if (contraseña.Contains(str1)) count = 1; 
-            }
-
-            if(count == 0) return false;
-
-
-
-            return false;
-
-
-        }
-
-        #endregion
-
     }
 
     protected Usuario(string nombre, string apellidos, string email, string contraseña, int? idUsuario = null)
@@ -81,8 +35,37 @@ public class Usuario
         Email = email;
         Contraseña = contraseña; 
 
+    }
+
+
+    #region METODOS
+
+    //Pendiente
+
+    static bool validarEmail(string email)
+    {
+        String expresion;
+        expresion = "\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*";
+        if (Regex.IsMatch(email, expresion))
+        {
+            if (Regex.Replace(email, expresion, String.Empty).Length == 0) return true;
+
+        }
+        return false;
+    }
+
+    static bool validarContraseña(string contraseña)
+    {
+        
+        if(contraseña.Length < 10 || contraseña.Length > 20) return false;
+
+        return true;
+
 
     }
+
+    #endregion
+
 
     //USUARIO
     //List<Usuario> usuarios = new List<Usuario>()

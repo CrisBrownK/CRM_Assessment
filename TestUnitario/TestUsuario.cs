@@ -8,7 +8,7 @@ public class TestUsuario
     string nombre = "Cris";
     string apellido = "Guzman";
     string email = "cristina.guzman@prueba.es";
-    string contraseña = "12345";
+    string contraseña = "12345125623";
 
     [Fact]
     public void TestGenerar_TodosLosParametrosObligatorios_Exito()
@@ -18,7 +18,7 @@ public class TestUsuario
 
         //Act-When
 
-        Result<Usuario> resultado =  Usuario.Generar(nombre, apellido, email, contraseña);
+        Result<Usuario> resultado = Usuario.Generar(nombre, apellido, email, contraseña);
 
         //Assert-Then
 
@@ -175,23 +175,10 @@ public class TestUsuario
 
     }
 
-    [Fact]
-    public void TestGenerar_EmailValido_Exito()
-    {
-        //Arrange-Given
 
-        //Act-When
-
-        Result<Usuario> resultado = Usuario.Generar(nombre,apellido,email,contraseña);
-
-        //Assert-Then
-
-        Assert.True(resultado.IsSuccess);
-
-    }
 
     [Fact]
-    public void TestGenerar_ContraseñaNoValida_Exito()
+    public void TestGenerar_ContraseñaLongitudInferiorA10Caracteres_Fallo()
     {
         //Arrange-Given
 
@@ -207,18 +194,20 @@ public class TestUsuario
     }
 
     [Fact]
-    public void TestGenerar_ContraseñaValida_Exito()
+    public void TestGenerar_ContraseñaLongitudSuperiorA20Caracteres_Fallo()
     {
         //Arrange-Given
 
         //Act-When
 
-        Result<Usuario> resultado = Usuario.Generar(nombre, apellido, email, "hola123#");
+        Result<Usuario> resultado = Usuario.Generar(nombre, apellido, email, "12345");
 
         //Assert-Then
 
-        Assert.True(resultado.IsSuccess);
+        Assert.False(resultado.IsSuccess);
+        Assert.Equal("La contraseña debe contener letras, números y carácteres especiales", resultado.Error);
 
     }
+
 
 }

@@ -4,7 +4,6 @@ public class Cliente
 {
     public int IdCliente { get; set; }
     public int IdOportunidad { get; set; }
-    public Oportunidad? Oportunidad { get; set; } //no recuerdo por qué era esto
 
 
     public Cliente(int idCliente, int idOportunidad)

@@ -33,15 +33,8 @@ public class OportunidadesControllerTest
         {
             List<Oportunidad> testOportunidad = new List<Oportunidad>();
 
-            testOportunidad.Add(new Oportunidad
-            {
-                Dni = "123456F",
-                Nombre = "Cristina",
-                PrimerApellido = "Guzman",
-                Email = "prueba@prueba"
-
-            });
-
+            testOportunidad.Add(Oportunidad.Generar("Cris", "gm", "234345FG", "698888888", "gm@gmail.com", 2, false).Value);
+            
             return testOportunidad;
 
         }
