@@ -9,11 +9,10 @@ namespace CRM_Api.Controllers
     [ApiController]
     public class OportunidadesController : ControllerBase
     {
-        
 
         // GET: api/<OportunidadesController>
         [HttpGet]
-        public IActionResult Get()
+        public List<Oportunidad> Get()
         {
             //Mostrar lista de oportunidades
             
