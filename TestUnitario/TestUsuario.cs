@@ -182,7 +182,7 @@ public class TestUsuario
 
         //Act-When
 
-        Result<Usuario> resultado = Usuario.Generar(nombre, apellido, "cristina.guzman@gmail.com", contraseña);
+        Result<Usuario> resultado = Usuario.Generar(nombre,apellido,email,contraseña);
 
         //Assert-Then
 

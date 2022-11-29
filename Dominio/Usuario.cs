@@ -18,7 +18,7 @@ public class Usuario
         if (string.IsNullOrEmpty(contraseña)) return Result.Fail<Usuario>("La contraseña no puede ser nulo ni estar vacío");
 
         if (validarEmail(email) == false) return Result.Fail<Usuario>("El formato del email introducido no es válido");
-        if(validarContraseña(contraseña) == false) return Result.Fail<Usuario>("La contraseña debe contener letras, números y carácteres especiales");
+        if (validarContraseña(contraseña) == false) return Result.Fail<Usuario>("La contraseña debe contener letras, números y carácteres especiales");
 
 
         Usuario usuario = new Usuario(nombre, apellidos, email, contraseña, idUsuario);
@@ -42,13 +42,28 @@ public class Usuario
 
         bool validarContraseña(string contraseña)
         {
-            string letras = "abcdefghijklmnoupqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            //string letras = "abcdefghijklmnoupqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
             string numero = "1234567890";
-            string especiales = "%$#?¿";
+            //string especiales = "%$#?¿";
 
-            if (contraseña.Contains(letras) && contraseña.Contains(numero) && contraseña.Contains(especiales)) return true;
+            //if (contraseña.Contains(letras) && contraseña.Contains(numero) && contraseña.Contains(especiales)) return true;
 
-            return false; 
+            int count = 0; 
+
+            for (int i=0; i<=9; i++)
+            {
+                string str1 = i.ToString();
+
+                if (contraseña.Contains(str1)) count = 1; 
+            }
+
+            if(count == 0) return false;
+
+
+
+            return false;
+
+
         }
 
         #endregion

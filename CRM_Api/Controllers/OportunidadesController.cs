@@ -10,14 +10,25 @@ namespace CRM_Api.Controllers
     [ApiController]
     public class OportunidadesController : ControllerBase
     {
-        
+        List<Oportunidad> oportunidades = new List<Oportunidad>()
+        {
+            new Oportunidad()
+            {
+                Nombre = "Cristina"
+            },
+            //new Oportunidad()
+            //{
+            //    Nombre = "Victor"
+            //}
+        };
 
-    // GET: api/<OportunidadesController>
-    [HttpGet]
+        // GET: api/<OportunidadesController>
+        [HttpGet]
         public List<Oportunidad> Get()
         {
             //Mostrar lista de oportunidades
-            
+            //return new string[] { "value1", "value2" };
+            //return Ok(oportunidades);
 
             return null;
         }
