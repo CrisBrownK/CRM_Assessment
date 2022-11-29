@@ -48,4 +48,32 @@ public class Oportunidad
 
     }
 
+    //LISTA OPORTUNIDADES
+    //List<Oportunidad> viaContactos = new List<Oportunidad>()
+    //{
+    //    new Oportunidad()
+    //    {
+    //        IdOportunidad = 1;
+    //        Nombre = Ross;
+    //        PrimerApellido = Gheller;
+    //        Dni = 45896541L;
+    //        Telefono = 655555555;
+    //        Email = Ross.Gheller@hotmail.es;
+    //        IdMotivo = 2;
+    //        Contratado = false;
+
+    //    },
+    //    new Oportunidad()
+    //    {
+    //        IdOportunidad = 2;
+    //        PrimerApellido = Buffay;
+    //        Dni = 889666521F;
+    //        Telefono = 6111111111;
+    //        Email = Phoebe.Buffay@hotmail.com;
+    //        IdMotivo = 2;
+    //        Contratado = true;
+
+    //    },
+    //}
+
 }

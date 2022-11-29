@@ -27,6 +27,8 @@ public class Usuario
 
 
         #region METODOS
+
+        //Pendiente
         
         bool validarEmail(string email)
         {
@@ -82,6 +84,19 @@ public class Usuario
 
     }
 
+    //USUARIO
+    //List<Usuario> usuarios = new List<Usuario>()
+    //{
+    //    new Usuario()
+    //    {
+    //        IdUsuario = 1;
+    //        Nombre = "Rachel",
+    //        Apellidos = "Green",
+    //        Email = "Rachel.Green@gmail.com",
+    //        Contraseña = "CentralPerk1"
+    //    },
+    //    
+    //}
 
 
 }
