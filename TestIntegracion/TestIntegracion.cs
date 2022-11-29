@@ -7,21 +7,26 @@ namespace TestIntegracion;
 public class OportunidadesControllerTest
 {
     [Fact]
-    public void TestGet_DevuelveValueValorLista_Exito()
+    public void TestGet_DevuelveValueLista_Exito()
     {
-        //IN PROGRESS
-        OportunidadesController oportunidadesController = new OportunidadesController();
+        
+        //Given
 
-        IActionResult resultado = oportunidadesController.Get();
+        List<Oportunidad> oportunidad = new List<Oportunidad>();
 
-        OkObjectResult resultadoOk = resultado as OkObjectResult;
-        var listado = resultadoOk.Value;
 
-        //var resultado = oportunidadesController.Get();
+        //When
 
-        //Assert.Contains(resultado.FirstOrDefault(), "value2");
+        new Oportunidad()
+        {
+            Nombre = "Cristina"
 
-        Assert.Equal(typeof(List<Oportunidad>), listado.GetType());
+        };
+
+        //Then
+
+        Assert.Equal("Cristina", oportunidad[0].Nombre);
+        
 
     }
 }
