@@ -15,6 +15,8 @@ namespace CRM_Api.Controllers
     [ApiController]
     public class OportunidadesController : ControllerBase
     {
+
+
         // GET: api/<OportunidadesController>
         [HttpGet]
         public List<Oportunidad> Get()
@@ -64,6 +66,8 @@ namespace CRM_Api.Controllers
             return oportunidades;
         }
 
+
+
         // GET api/<OportunidadesController>/5
         [HttpGet("{id}")]
         public Oportunidad Get(int id)
@@ -104,21 +108,19 @@ namespace CRM_Api.Controllers
 
                     oportunidad = resultado.Value;
 
-
                 }
-
 
             }
 
-
             return oportunidad;
         }
+
 
         // POST api/<OportunidadesController>
         [HttpPost]
         public void Post([FromBody] OportunidadPostDTO oportunidad)
         {
-            Result<Oportunidad> resultado =  Oportunidad.Generar(oportunidad.Nombre, oportunidad.PrimerApellido, oportunidad.Dni, oportunidad.Telefono, oportunidad.Email, oportunidad.IdMotivo, oportunidad.Contratado, oportunidad.IdCliente, oportunidad.SegundoApellido);
+            Result<Oportunidad> resultado = Oportunidad.Generar(oportunidad.Nombre, oportunidad.PrimerApellido, oportunidad.Dni, oportunidad.Telefono, oportunidad.Email, oportunidad.IdMotivo, oportunidad.Contratado, oportunidad.IdCliente, oportunidad.SegundoApellido);
 
             if (resultado.IsFailure)
             {
@@ -160,18 +162,20 @@ namespace CRM_Api.Controllers
                     cmd.Parameters.AddWithValue("@IdMotivo", oportunidad.IdMotivo);
                     cmd.Parameters.AddWithValue("@Contratado", oportunidad.Contratado);
 
+
+
                     cmd.ExecuteNonQuery();
 
 
                 }
 
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
 
             }
 
-            
+
 
         }
 
@@ -182,6 +186,6 @@ namespace CRM_Api.Controllers
             //Cambiar estado a contratado
         }
 
-        
+
     }
 }

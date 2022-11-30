@@ -194,18 +194,12 @@ public class TestOportunidad
 
 
     [Fact]
-    public void TestGenerar_ExisteOportunidad_Fallo()
+    public void TestGenerar_ExisteOportunidad_Exito()
     {
-        //Given
-        List<Oportunidad> oportunidades = new List<Oportunidad>();
 
-        oportunidades.Add(new Oportunidad("Maria", "Gonzalez", "11233546f", "6111111111", "mariagonzalez@gmail.com", 1, false));
+        //En Base de datos ya guardado: DNI: 45698745L, Motivo: 1
 
-        //When
-
-        Result<Oportunidad> resultado = Oportunidad.Generar(nombre, primerApellido, dni, telefono, email, idMotivo, contratado);
-
-        //Then
+        Result<Oportunidad> resultado = Oportunidad.Generar(nombre, primerApellido, "45698745L", telefono, email, 1, contratado);
 
         Assert.False(resultado.IsSuccess);
         Assert.Equal("Esta oportunidad ya está registrada", resultado.Error);

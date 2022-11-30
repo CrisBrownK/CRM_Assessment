@@ -27,7 +27,9 @@ public class Oportunidad
         if (idMotivo <= 0) return Result.Fail<Oportunidad>("Se debe seleccionar un motivo");
 
         if (validarEmail(email) == false) return Result.Fail<Oportunidad>("El formato del email introducido no es válido");
-        if (ExisteOportunidad(dni, idMotivo) == false) return Result.Fail<Oportunidad>("Esta oportunidad ya está registrada");
+        
+        //ESTA VALIDACION VA EN EL POST
+        if (ExisteOportunidad(dni, idMotivo) == true) return Result.Fail<Oportunidad>("Esta oportunidad ya está registrada");
 
         Oportunidad oportunidad = new Oportunidad(nombre, primerApellido, dni, telefono, email, idMotivo, contratado, idCliente, SegundoApellido, idOportunidad);
         return Result.Ok(oportunidad);
@@ -68,8 +70,22 @@ public class Oportunidad
 
     static bool ExisteOportunidad(string dni, int idMotivo)
     {
-        return true;
-      
+        bool resultado = false;
+
+        using (SqlConnection con = new SqlConnection("Server=DESKTOP-1H3OQ1O\\SQLEXPRESS;Database=CRM;Trusted_Connection=True;MultipleActiveResultSets=true;"))
+        {
+            con.Open();
+            SqlCommand cmd = new SqlCommand("SELECT * FROM Oportunidades WHERE Dni = @dni AND IdMotivo = @idMotivo", con);
+            cmd.Parameters.AddWithValue("@dni", dni);
+            cmd.Parameters.AddWithValue("@idMotivo", idMotivo);
+            int count = Convert.ToInt32(cmd.ExecuteScalar());
+
+            if (count > 0) resultado = true;
+
+        }
+
+        return resultado;
+
 
     }
 
