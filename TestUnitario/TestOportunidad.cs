@@ -11,7 +11,9 @@ public class TestOportunidad
     string telefono = "6111111111";
     string email = "mariagonzalez@gmail.com";
     int idMotivo = 1;
-    bool contratado = false; 
+    bool contratado = false;
+
+
 
 
     [Fact]
@@ -24,7 +26,7 @@ public class TestOportunidad
     }
 
     [Fact]
-    public void TestGenerar_NombreVacio_Exito()
+    public void TestGenerar_NombreVacio_Fallo()
     {
         //Arrange-Given
 
@@ -40,7 +42,7 @@ public class TestOportunidad
     }
 
     [Fact]
-    public void TestGenerar_NombreNull_Exito()
+    public void TestGenerar_NombreNull_Fallo()
     {
         //Arrange-Given
 
@@ -57,7 +59,7 @@ public class TestOportunidad
 
 
     [Fact]
-    public void TestGenerar_PrimerApellidoVacio_Exito()
+    public void TestGenerar_PrimerApellidoVacio_Fallo()
     {
         //Arrange-Given
 
@@ -74,7 +76,7 @@ public class TestOportunidad
     }
 
     [Fact]
-    public void TestGenerar_PrimerApellidoNull_Exito()
+    public void TestGenerar_PrimerApellidoNull_Fallo()
     {
         //Arrange-Given
 
@@ -90,7 +92,7 @@ public class TestOportunidad
     }
 
     [Fact]
-    public void TestGenerar_DniVacio_Exito()
+    public void TestGenerar_DniVacio_Fallo()
     {
         //Arrange-Given
 
@@ -107,7 +109,7 @@ public class TestOportunidad
     }
 
     [Fact]
-    public void TestGenerar_DniNull_Exito()
+    public void TestGenerar_DniNull_Fallo()
     {
         //Arrange-Given
 
@@ -123,7 +125,7 @@ public class TestOportunidad
     }
 
     [Fact]
-    public void TestGenerar_TelefonoVacio_Exito()
+    public void TestGenerar_TelefonoVacio_Fallo()
     {
         //Arrange-Given
 
@@ -140,7 +142,7 @@ public class TestOportunidad
     }
 
     [Fact]
-    public void TestGenerar_TelefonoNull_Exito()
+    public void TestGenerar_TelefonoNull_Fallo()
     {
         //Arrange-Given
 
@@ -156,7 +158,7 @@ public class TestOportunidad
     }
 
     [Fact]
-    public void TestGenerar_EmailVacio_Exito()
+    public void TestGenerar_EmailVacio_Fallo()
     {
         //Arrange-Given
 
@@ -173,9 +175,11 @@ public class TestOportunidad
     }
 
     [Fact]
-    public void TestGenerar_EmaiNull_Exito()
+    public void TestGenerar_EmaiNull_Fallo()
     {
         //Arrange-Given
+
+
 
         //Act-When
 
@@ -186,6 +190,25 @@ public class TestOportunidad
         Assert.False(resultado.IsSuccess);
         Assert.Equal("El email no puede ser nulo ni estar vacío", resultado.Error);
 
+    }
+
+
+    [Fact]
+    public void TestGenerar_ExisteOportunidad_Fallo()
+    {
+        //Given
+        List<Oportunidad> oportunidades = new List<Oportunidad>();
+
+        oportunidades.Add(new Oportunidad("Maria", "Gonzalez", "11233546f", "6111111111", "mariagonzalez@gmail.com", 1, false));
+
+        //When
+
+        Result<Oportunidad> resultado = Oportunidad.Generar(nombre, primerApellido, dni, telefono, email, idMotivo, contratado);
+
+        //Then
+
+        Assert.False(resultado.IsSuccess);
+        Assert.Equal("Esta oportunidad ya está registrada", resultado.Error);
     }
 
 }

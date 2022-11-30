@@ -8,7 +8,7 @@ public class TestUsuario
     string nombre = "Cris";
     string apellido = "Guzman";
     string email = "cristina.guzman@prueba.es";
-    string contraseña = "12345125623";
+    string contraseña = "1234343534534";
 
     [Fact]
     public void TestGenerar_TodosLosParametrosObligatorios_Exito()

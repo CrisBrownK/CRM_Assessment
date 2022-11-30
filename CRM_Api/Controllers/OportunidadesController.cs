@@ -25,7 +25,7 @@ namespace CRM_Api.Controllers
 
             List<Oportunidad> oportunidades = new List<Oportunidad>();
 
-            using (SqlConnection con = new SqlConnection("Server=DESKTOP-P804OHV;Database=CRM;Trusted_Connection=True;MultipleActiveResultSets=true;"))
+            using (SqlConnection con = new SqlConnection("Server=DESKTOP-1H3OQ1O\\SQLEXPRESS;Database=CRM;Trusted_Connection=True;MultipleActiveResultSets=true;"))
             {
                 con.Open();
                 SqlCommand cmd = new SqlCommand("SELECT IdOportunidad, IdCliente, Nombre, PrimerApellido, SegundoApellido, Dni, Telefono, Email, IdMotivo, Contratado FROM Oportunidades", con);
@@ -73,7 +73,7 @@ namespace CRM_Api.Controllers
             Oportunidad oportunidad = null;
 
 
-            using (SqlConnection con = new SqlConnection("Server=DESKTOP-P804OHV;Database=CRM;Trusted_Connection=True;MultipleActiveResultSets=true;"))
+            using (SqlConnection con = new SqlConnection("Server=DESKTOP-1H3OQ1O\\SQLEXPRESS;Database=CRM;Trusted_Connection=True;MultipleActiveResultSets=true;"))
             {
                 con.Open();
                 SqlCommand cmd = new SqlCommand("SELECT IdOportunidad, IdCliente, Nombre, PrimerApellido, SegundoApellido, Dni, Telefono, Email, IdMotivo, Contratado FROM Oportunidades WHERE IdOportunidad = @Id", con);
@@ -127,7 +127,7 @@ namespace CRM_Api.Controllers
 
             try
             {
-                using (SqlConnection con = new SqlConnection("Server=DESKTOP-P804OHV;Database=CRM;Trusted_Connection=True;MultipleActiveResultSets=true;"))
+                using (SqlConnection con = new SqlConnection("Server=DESKTOP-1H3OQ1O\\SQLEXPRESS;Database=CRM;Trusted_Connection=True;MultipleActiveResultSets=true;"))
                 {
 
                     con.Open();

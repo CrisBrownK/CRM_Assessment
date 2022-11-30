@@ -1,4 +1,7 @@
-﻿namespace Dominio;
+﻿using System.Data.SqlClient;
+using System.Text.RegularExpressions;
+
+namespace Dominio;
 
 public class Oportunidad
 {
@@ -21,14 +24,17 @@ public class Oportunidad
         if (string.IsNullOrEmpty(dni)) return Result.Fail<Oportunidad>("El dni no puede ser nulo ni estar vacío");
         if (string.IsNullOrEmpty(telefono)) return Result.Fail<Oportunidad>("El telefono no puede ser nulo ni estar vacío");
         if (string.IsNullOrEmpty(email)) return Result.Fail<Oportunidad>("El email no puede ser nulo ni estar vacío");
-        if (idMotivo <= 0) return Result.Fail<Oportunidad>("Se debe seleccionar un motivo"); 
-        
+        if (idMotivo <= 0) return Result.Fail<Oportunidad>("Se debe seleccionar un motivo");
+
+        if (validarEmail(email) == false) return Result.Fail<Oportunidad>("El formato del email introducido no es válido");
+        if (ExisteOportunidad(dni, idMotivo) == false) return Result.Fail<Oportunidad>("Esta oportunidad ya está registrada");
+
         Oportunidad oportunidad = new Oportunidad(nombre, primerApellido, dni, telefono, email, idMotivo, contratado, idCliente, SegundoApellido, idOportunidad);
         return Result.Ok(oportunidad);
     }
 
 
-    protected Oportunidad(string nombre, string primerApellido, string dni, string telefono, string email, int idMotivo, bool contratado, int? idCliente = null, string? segundoApellido = null, int? idOportunidad = null)
+    public Oportunidad(string nombre, string primerApellido, string dni, string telefono, string email, int idMotivo, bool contratado, int? idCliente = null, string? segundoApellido = null, int? idOportunidad = null)
     {
         if (idOportunidad != null) IdOportunidad = idOportunidad.Value;
         Nombre = nombre;
@@ -43,6 +49,36 @@ public class Oportunidad
 
 
     }
+
+
+
+    #region METODOS
+
+    static bool validarEmail(string email)
+    {
+        String expresion;
+        expresion = "\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*";
+        if (Regex.IsMatch(email, expresion))
+        {
+            if (Regex.Replace(email, expresion, String.Empty).Length == 0) return true;
+
+        }
+        return false;
+    }
+
+    static bool ExisteOportunidad(string dni, int idMotivo)
+    {
+        return true;
+      
+
+    }
+
+    #endregion
+
+
+
+
+
 
     //LISTA OPORTUNIDADES
     //List<Oportunidad> viaContactos = new List<Oportunidad>()
