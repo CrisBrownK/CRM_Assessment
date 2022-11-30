@@ -23,9 +23,9 @@ namespace CRM_Api.Controllers
         {
             Usuario usuario = null; 
 
-            using (SqlConnection con = new SqlConnection("Server=DESKTOP-1H3OQ1O\\SQLEXPRESS;Database=CRM;Trusted_Connection=True;MultipleActiveResultSets=true;"))
+            using (SqlConnection con = new SqlConnection("Server=DESKTOP-P804OHV;Database=CRM;Trusted_Connection=True;MultipleActiveResultSets=true;"))
             {
-                SqlCommand cmd = new SqlCommand("SELECT IdUsuario, Nombre, Apellidos, Email, Contraseña FROM Usuario WHERE Email = @email", con);
+                SqlCommand cmd = new SqlCommand("SELECT IdUsuario, Nombre, Apellidos, Email, Contraseña FROM Usuarios WHERE Email = @email", con);
                 cmd.Parameters.AddWithValue("@email", _email);
 
                 con.Open();

@@ -27,7 +27,11 @@ namespace CRM_Api.Controllers
 
             List<Oportunidad> oportunidades = new List<Oportunidad>();
 
-            using (SqlConnection con = new SqlConnection("Server=DESKTOP-1H3OQ1O\\SQLEXPRESS;Database=CRM;Trusted_Connection=True;MultipleActiveResultSets=true;"))
+            //DESKTOP-P804OHV
+            //DESKTOP-1H3OQ1O\\SQLEXPRESS
+
+
+            using (SqlConnection con = new SqlConnection("Server=DESKTOP-P804OHV;Database=CRM;Trusted_Connection=True;MultipleActiveResultSets=true;"))
             {
                 con.Open();
                 SqlCommand cmd = new SqlCommand("SELECT IdOportunidad, IdCliente, Nombre, PrimerApellido, SegundoApellido, Dni, Telefono, Email, IdMotivo, Contratado FROM Oportunidades", con);
@@ -77,7 +81,7 @@ namespace CRM_Api.Controllers
             Oportunidad oportunidad = null;
 
 
-            using (SqlConnection con = new SqlConnection("Server=DESKTOP-1H3OQ1O\\SQLEXPRESS;Database=CRM;Trusted_Connection=True;MultipleActiveResultSets=true;"))
+            using (SqlConnection con = new SqlConnection("Server=DESKTOP-P804OHV;Database=CRM;Trusted_Connection=True;MultipleActiveResultSets=true;"))
             {
                 con.Open();
                 SqlCommand cmd = new SqlCommand("SELECT IdOportunidad, IdCliente, Nombre, PrimerApellido, SegundoApellido, Dni, Telefono, Email, IdMotivo, Contratado FROM Oportunidades WHERE IdOportunidad = @Id", con);
@@ -129,10 +133,18 @@ namespace CRM_Api.Controllers
 
             try
             {
-                using (SqlConnection con = new SqlConnection("Server=DESKTOP-1H3OQ1O\\SQLEXPRESS;Database=CRM;Trusted_Connection=True;MultipleActiveResultSets=true;"))
+                using (SqlConnection con = new SqlConnection("Server=DESKTOP-P804OHV;Database=CRM;Trusted_Connection=True;MultipleActiveResultSets=true;"))
                 {
 
                     con.Open();
+
+                    SqlCommand cmdValidar = new SqlCommand("SELECT Count(*) FROM Oportunidades WHERE Dni = @dni AND IdMotivo = @idMotivo", con);
+                    cmdValidar.Parameters.AddWithValue("@dni", oportunidad.Dni);
+                    cmdValidar.Parameters.AddWithValue("@idMotivo", oportunidad.IdMotivo);
+                    int count = Convert.ToInt32(cmdValidar.ExecuteScalar());
+
+                    if (count > 0) return; 
+
                     SqlCommand cmd = new SqlCommand("INSERT INTO Oportunidades (IdCliente ,Nombre ,PrimerApellido ,SegundoApellido ,Dni ,Telefono ,Email ,IdMotivo ,Contratado) VALUES (@IdCliente, @Nombre, @PrimerApellido, @SegundoApellido, @Dni, @Telefono, @Email, @IdMotivo, @Contratado)", con);
 
                     if (oportunidad.IdCliente == null)
