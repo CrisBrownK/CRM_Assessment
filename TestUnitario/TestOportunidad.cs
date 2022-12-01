@@ -192,17 +192,17 @@ public class TestOportunidad
 
     }
 
+    //SE REALIZA COMPROBACION DESDE BASE DE DATOS EN API POST
+    //[Fact]
+    //public void TestGenerar_ExisteOportunidad_Exito()
+    //{
 
-    [Fact]
-    public void TestGenerar_ExisteOportunidad_Exito()
-    {
+    //    //En Base de datos ya guardado: DNI: 45698745L, Motivo: 1
 
-        //En Base de datos ya guardado: DNI: 45698745L, Motivo: 1
+    //    Result<Oportunidad> resultado = Oportunidad.Generar(nombre, primerApellido, "45698745L", telefono, email, 1, contratado);
 
-        Result<Oportunidad> resultado = Oportunidad.Generar(nombre, primerApellido, "45698745L", telefono, email, 1, contratado);
-
-        Assert.False(resultado.IsSuccess);
-        Assert.Equal("Esta oportunidad ya está registrada", resultado.Error);
-    }
+    //    Assert.False(resultado.IsSuccess);
+    //    Assert.Equal("Esta oportunidad ya está registrada", resultado.Error);
+    //}
 
 }

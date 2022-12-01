@@ -1,17 +1,22 @@
 import React, { useState } from'react';
 import axios from 'axios'; 
 import './App.css';
+import ListaOportunidades from './Components/ListaOportunidades';
+import Login from './Components/Login';
+import { BrowserRouter, Routes, Route, Link, NavLink } from "react-router-dom";
 
 
 
 function App() {
 
-const [data, setData] = useState([]);
-axios.get("https://localhost:7121/api/oportunidad").then(response => setData(response.data)); 
-console.log(data);
   return (
     <div className="App">
-      {data[0]}
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Login />} />
+          <Route path="/ListaOportunidades" element={<ListaOportunidades />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }

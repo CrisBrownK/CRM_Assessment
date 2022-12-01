@@ -10,20 +10,27 @@ namespace CRM_Api.Controllers
     [ApiController]
     public class UsuarioController : ControllerBase
     {
+
+        string conexionBDmesa = "Server=DESKTOP-P804OHV;Database=CRM;Trusted_Connection=True;MultipleActiveResultSets=true;";
+        string conexionBDportatil = "Server=DESKTOP-1H3OQ1O\\SQLEXPRESS;Database=CRM;Trusted_Connection=True;MultipleActiveResultSets=true;";
+
+
+
         // GET: api/<UsuarioController>
-        [HttpGet]
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
+        //[HttpGet]
+        //public IEnumerable<string> Get()
+        //{
+        //    return new string[] { "value1", "value2" };
+        //}
 
         // GET api/<UsuarioController>/5
-        [HttpGet("{Email}")]
+        //("{Email}")
+        [HttpGet]
         public Usuario Get(string _email)
         {
             Usuario usuario = null; 
 
-            using (SqlConnection con = new SqlConnection("Server=DESKTOP-P804OHV;Database=CRM;Trusted_Connection=True;MultipleActiveResultSets=true;"))
+            using (SqlConnection con = new SqlConnection(conexionBDportatil))
             {
                 SqlCommand cmd = new SqlCommand("SELECT IdUsuario, Nombre, Apellidos, Email, Contraseña FROM Usuarios WHERE Email = @email", con);
                 cmd.Parameters.AddWithValue("@email", _email);

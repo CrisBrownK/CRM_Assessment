@@ -17,6 +17,9 @@ namespace CRM_Api.Controllers
     {
 
 
+        string conexionBDmesa = "Server=DESKTOP-P804OHV;Database=CRM;Trusted_Connection=True;MultipleActiveResultSets=true;";
+        string conexionBDportatil = "Server=DESKTOP-1H3OQ1O\\SQLEXPRESS;Database=CRM;Trusted_Connection=True;MultipleActiveResultSets=true;";
+
         // GET: api/<OportunidadesController>
         [HttpGet]
         public List<Oportunidad> Get()
@@ -31,7 +34,7 @@ namespace CRM_Api.Controllers
             //DESKTOP-1H3OQ1O\\SQLEXPRESS
 
 
-            using (SqlConnection con = new SqlConnection("Server=DESKTOP-P804OHV;Database=CRM;Trusted_Connection=True;MultipleActiveResultSets=true;"))
+            using (SqlConnection con = new SqlConnection(conexionBDportatil))
             {
                 con.Open();
                 SqlCommand cmd = new SqlCommand("SELECT IdOportunidad, IdCliente, Nombre, PrimerApellido, SegundoApellido, Dni, Telefono, Email, IdMotivo, Contratado FROM Oportunidades", con);
@@ -81,7 +84,7 @@ namespace CRM_Api.Controllers
             Oportunidad oportunidad = null;
 
 
-            using (SqlConnection con = new SqlConnection("Server=DESKTOP-P804OHV;Database=CRM;Trusted_Connection=True;MultipleActiveResultSets=true;"))
+            using (SqlConnection con = new SqlConnection(conexionBDportatil))
             {
                 con.Open();
                 SqlCommand cmd = new SqlCommand("SELECT IdOportunidad, IdCliente, Nombre, PrimerApellido, SegundoApellido, Dni, Telefono, Email, IdMotivo, Contratado FROM Oportunidades WHERE IdOportunidad = @Id", con);
@@ -133,7 +136,7 @@ namespace CRM_Api.Controllers
 
             try
             {
-                using (SqlConnection con = new SqlConnection("Server=DESKTOP-P804OHV;Database=CRM;Trusted_Connection=True;MultipleActiveResultSets=true;"))
+                using (SqlConnection con = new SqlConnection(conexionBDportatil))
                 {
 
                     con.Open();
