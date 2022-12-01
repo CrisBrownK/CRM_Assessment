@@ -1,3 +1,9 @@
+body{
+    font-family: sans-serif;
+    background-image: url('FondoLogin.jpg');
+    background-repeat: no-repeat;
+}
+
 .containerLogin{
     /* border: 1px solid #ccc;
     display: block;
@@ -5,9 +11,11 @@
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
     border-radius: 15px;
-    max-width: 500px;
+    max-width: 400px;
+    max-height: 600px;
     margin: 0 auto;
-    margin-top: 5em;
+    margin-top: 10px;
+    margin-top: 15em;
 }
 
 .containerLogin:hover{
@@ -17,14 +25,39 @@
 .tituloLogin{
     border-radius: 15px 15px 0 0px;
     font-size: 30px;
-    background-color: mediumpurple;
+    background-color: rgb(15, 64, 110);
     margin: 0;
+    padding: 15px;
+    color:rgb(20, 20, 20)
 
 }
 
 .divLogin{
     border-radius: 0 0 15px 15px;
-    background-color: blanchedalmond;
+    background-color: rgb(70, 121, 168);
     padding: 20px;
 
+}
+
+input{
+    border-radius: 7px;
+    border: 1px solid rgb(164, 165, 167);
+    margin: 10px;
+    padding: 5px;
+    width: 70%;
+}
+
+button{
+    border-radius: 7px;
+    border: 1px solid rgb(167, 164, 164);
+    margin: 10px;
+    padding: 5px;
+    width: 30%;
+    margin-bottom: 30px;
+    margin-top: 20px;;
+}
+
+button:hover{
+    background-color: rgb(46, 46, 46);
+    color: rgb(189, 189, 189)
 }

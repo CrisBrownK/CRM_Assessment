@@ -1,13 +1,47 @@
-.tabla{
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin: auto;
-    margin-top: 1em;
+body{
+    margin: 0;
+    padding: 20px;
+    font-family: sans-serif;
+    /* background-image: none; */
 }
 
-.firstColumn{
+
+.titulo{
+margin-bottom: 50px;
+font-size: 30px;
+}
+
+.tabla{
+    
+width: 80%;
+max-width: 1000px;
+border-collapse: collapse;
+margin: auto;
+
+}
+
+.tabla td, .tabla th {
+    padding: 30px, 15px;
+    border: 1px solid #ddd;
+    text-align: center;
+    font-size: 15px;
     
 }
 
-.th{
+.tabla th{
+    background-color: rgb(15, 64, 110);
+border: 1px solid rgb(68, 68, 68);
+color: rgb(226, 226, 226);
+}
+
+
+.tabla tr{
+    border: 1px solid rgb(29, 29, 29);
+    margin: 20px;
+    background-color: rgb(245, 245, 245);
+}
+
+.tabla tr:hover{
+    background-color: rgb(70, 121, 168);
+    color:white;
 }

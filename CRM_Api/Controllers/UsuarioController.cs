@@ -25,15 +25,16 @@ namespace CRM_Api.Controllers
 
         // GET api/<UsuarioController>/5
         //("{Email}")
-        [HttpGet]
-        public Usuario Get(string _email)
+        [HttpGet("{Email}/{Contraseña}")]
+        public Usuario Get(string Email, string Contraseña)
         {
             Usuario usuario = null; 
 
-            using (SqlConnection con = new SqlConnection(conexionBDportatil))
+            using (SqlConnection con = new SqlConnection(conexionBDmesa))
             {
-                SqlCommand cmd = new SqlCommand("SELECT IdUsuario, Nombre, Apellidos, Email, Contraseña FROM Usuarios WHERE Email = @email", con);
-                cmd.Parameters.AddWithValue("@email", _email);
+                SqlCommand cmd = new SqlCommand("SELECT IdUsuario, Nombre, Apellidos, Email, Contraseña FROM Usuarios WHERE Email = @email AND Contraseña = @Contraseña", con);
+                cmd.Parameters.AddWithValue("@email", Email);
+                cmd.Parameters.AddWithValue("@Contraseña", Contraseña);
 
                 con.Open();
                 SqlDataReader dr = cmd.ExecuteReader();

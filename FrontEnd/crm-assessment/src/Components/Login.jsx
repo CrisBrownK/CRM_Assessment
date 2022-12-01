@@ -21,43 +21,48 @@ export default function Login() {
     function SubmitHandler(event){
       let email = document.getElementsByClassName("username")[0].value;
       let password = document.getElementsByClassName("password")[0].value;
+      event.preventDefault();
       console.log(email, password);
-      URLget += "?_email=" + email;
+      URLget += email + "/" + password;
       console.log(URLget);
 
-      var requestOptions = {
-        method: 'GET',
-        redirect: 'follow'
-      };
+      // var requestOptions = {
+      //   method: 'GET',
+      //   redirect: 'follow'
+      // };
 
-      fetch(URLget, requestOptions)
-       .then((response) => response.json())
-       .then((response) => setUserData(response))
-       .then((response) => console.log(response))
-       .catch(error => console.log(error));
+      // fetch(URLget, requestOptions)
+      //  .then((response) => response.json())
+      //  .then((response) => setUserData(response))
+      //  .then((response) => console.log(response))
+      //  .catch(error => console.log(error));
 
-       console.log(userData.email);
-       console.log(userData.contraseña);
-          if(userData.email === email && userData.contraseña === password){
-            handleSubmit();
-          }
-
-      // useEffect(() => {
-      //   axios.get(URLget)
-      //    .then((response) => {
-      //       console.log(response)
-      //       console.log(response.data)
-      //       setUserData(response.data)
-      //     })
-      //     .catch(error => console.log(error))
-  
-      //     if(userData.email === email && userData.password === password){
+      //  console.log(userData.email);
+      //  console.log(userData.contraseña);
+      //     if(userData.email === email && userData.contraseña === password){
       //       handleSubmit();
       //     }
+      //debugger;
+      // useEffect(() => {
+        axios.get(URLget)
+         .then((response) => {
+            console.log("hola")
+            console.log(response)
+            console.log("hola")
+            console.log(response.data)
+            setUserData(response.data)
+          })
+          .catch(error => console.log(error))
 
       // }, [])
-  
+      debugger;
+      if(userData.email === email && userData.contraseña === password){
+        navigate('/ListaOportunidades');
+        //handleSubmit();
+      }
+
     }
+
 
 
   return (
@@ -79,7 +84,7 @@ export default function Login() {
               type="password"
               className="password"
               name="password"
-              placeholder="password"
+              placeholder="Contraseña"
             />
         </div>
         <div>

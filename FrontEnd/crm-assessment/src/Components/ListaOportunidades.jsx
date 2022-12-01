@@ -27,7 +27,6 @@ export default function ListaOportunidades() {
             <td>{data.telefono}</td>
             <td>{data.email}</td>
             <td>{data.idMotivo}</td>
-            <td>{data.contratado}</td>
         </tr>
         )
         
@@ -36,16 +35,15 @@ export default function ListaOportunidades() {
     return (
         <div>
             <div>
-                <h2>Listado Oportunidades</h2>
+                <h2 className="titulo">LISTA OPORTUNIDADES</h2>
             </div>
             <table className="tabla">
-                <tr className='firstColumn'>
+                <tr>
                     <th>NOMBRE</th>
                     <th>APELLIDO</th>
                     <th>TELEFONO</th>
                     <th>EMAIL</th>
                     <th>MOTIVO</th>
-                    <th>CONTRATADO</th>
                 </tr>
                 {arrayData}
             </table>
