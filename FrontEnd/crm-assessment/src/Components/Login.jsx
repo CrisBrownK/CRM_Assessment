@@ -56,6 +56,10 @@ export default function Login() {
 
       // }, [])
       debugger;
+      console.log("userdataemail", userData.email)
+      console.log("userdatacontra", userData.contraseña)
+      console.log("email", email)
+      console.log("password", password)
       if(userData.email === email && userData.contraseña === password){
         navigate('/ListaOportunidades');
         //handleSubmit();

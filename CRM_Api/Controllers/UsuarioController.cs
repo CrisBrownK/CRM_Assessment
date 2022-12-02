@@ -30,7 +30,7 @@ namespace CRM_Api.Controllers
         {
             Usuario usuario = null; 
 
-            using (SqlConnection con = new SqlConnection(conexionBDmesa))
+            using (SqlConnection con = new SqlConnection(conexionBDportatil))
             {
                 SqlCommand cmd = new SqlCommand("SELECT IdUsuario, Nombre, Apellidos, Email, Contraseña FROM Usuarios WHERE Email = @email AND Contraseña = @Contraseña", con);
                 cmd.Parameters.AddWithValue("@email", Email);

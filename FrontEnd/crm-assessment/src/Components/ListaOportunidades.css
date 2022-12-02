@@ -9,6 +9,22 @@ body{
 .titulo{
 margin-bottom: 50px;
 font-size: 30px;
+color:rgb(58, 58, 58);
+}
+
+.btnAñadirOportunidad{
+    border-radius: 7px;
+    border: 1px solid rgb(167, 164, 164);
+    margin: 3px;
+    padding: 2px;
+    width: 80%;
+    max-width: 1000px;
+    margin-top: 20px;;
+}
+
+.btnAñadirOportunidad:hover{
+    background-color: rgb(70, 121, 168);
+    color: rgb(251, 251, 251)
 }
 
 .tabla{

@@ -1,9 +1,19 @@
 import React from 'react'
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import {useNavigate} from "react-router-dom";
 import './ListaOportunidades.css';
 
 export default function ListaOportunidades() {
+
+
+    const navigate = useNavigate();
+
+    const handleSubmit =(event) => {
+      event.preventDefault();
+      // window.location.href = "/ListaOportunidades"
+      navigate('/CrearOportunidad')
+    }
 
     const URLget = "https://localhost:7121/api/oportunidad";
     const [data, setData] = useState([])
@@ -36,6 +46,9 @@ export default function ListaOportunidades() {
         <div>
             <div>
                 <h2 className="titulo">LISTA OPORTUNIDADES</h2>
+            </div>
+            <div>
+                <button type="button" className='btnAñadirOportunidad' onClick={handleSubmit}>Añadir</button>
             </div>
             <table className="tabla">
                 <tr>

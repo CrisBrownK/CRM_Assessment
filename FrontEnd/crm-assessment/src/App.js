@@ -4,6 +4,7 @@ import './App.css';
 import ListaOportunidades from './Components/ListaOportunidades';
 import Login from './Components/Login';
 import { BrowserRouter, Routes, Route, Link, NavLink } from "react-router-dom";
+import CrearOportunidad from './Components/CrearOportunidad';
 
 
 
@@ -15,6 +16,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="/ListaOportunidades" element={<ListaOportunidades />} />
+          <Route path="/CrearOportunidad" element={<CrearOportunidad />} />
         </Routes>
       </BrowserRouter>
     </div>
